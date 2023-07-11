@@ -1,83 +1,87 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div>
+    <Nav />
+    <HomeCarousel :sale_items = "products" />
+    <br><br>
+    <v-container>
+      <h1 class="text-md-h4 text-h6">
+        Check these out 🔥
+      </h1>
+      <br>
+      <ProductSlider :products="products" />
+      <br><br><br>
+      <Newsletter />
+    </v-container>
+    <br><br>
+    <Footer />
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'HomePage',
+  data () {
+    return {
+      products: [
+        {
+          id: 1,
+          name: 'Silky Smooth Beats',
+          onSale: false,
+          tags: ['Headphone', 'People'],
+          image: 'https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, possimus temporibus reprehenderit molestiae, doloribus eos obcaecati expedita, voluptatibus commodi  suscipit aliquid fuga modi alias fugiat nostrum. Accusantium incidunt quae modi',
+          price: 20000,
+          salePrice: null,
+          ratings: 4.0
+        },
+        {
+          id: 2,
+          name: 'Lady Luck Is Smiling',
+          onSale: true,
+          tags: ['Perfume', 'Women'],
+          image: 'https://images.pexels.com/photos/6062560/pexels-photo-6062560.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, possimus temporibus reprehenderit molestiae, doloribus eos obcaecati expedita, voluptatibus commodi  suscipit aliquid fuga modi alias fugiat nostrum. Accusantium incidunt quae modi',
+          price: 3500,
+          salePrice: 3000,
+          ratings: 4.5
+        },
+        {
+          id: 3,
+          name: 'Green Nike Zoom',
+          onSale: true,
+          tags: ['Nike', 'Men'],
+          image: 'https://images.pexels.com/photos/1456706/pexels-photo-1456706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, possimus temporibus reprehenderit molestiae, doloribus eos obcaecati expedita, voluptatibus commodi  suscipit aliquid fuga modi alias fugiat nostrum. Accusantium incidunt quae modi',
+          price: 10500,
+          salePrice: 9000,
+          ratings: 4.5
+        },
+        {
+          id: 4,
+          name: 'New Home Living Room Set',
+          onSale: false,
+          tags: ['Home', 'Pretty'],
+          image: 'https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, possimus temporibus reprehenderit molestiae, doloribus eos obcaecati expedita, voluptatibus commodi  suscipit aliquid fuga modi alias fugiat nostrum. Accusantium incidunt quae modi',
+          price: 100500,
+          salePrice: null,
+          ratings: 4
+        },
+        {
+          id: 5,
+          name: 'Classic Man Watch',
+          onSale: true,
+          tags: ['Watch', 'Men'],
+          image: 'https://images.pexels.com/photos/3210711/pexels-photo-3210711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, possimus temporibus reprehenderit molestiae, doloribus eos obcaecati expedita, voluptatibus commodi  suscipit aliquid fuga modi alias fugiat nostrum. Accusantium incidunt quae modi',
+          price: 50500,
+          salePrice: 40000,
+          ratings: 3.5
+        }
+      ]
+    }
+  }
 }
 </script>
+
+<style lang='scss' scoped></style>

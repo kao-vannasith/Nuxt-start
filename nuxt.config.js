@@ -26,7 +26,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
+  css: ['@sweetalert2/theme-material-ui','~/assets/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -47,8 +47,15 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'vue-sweetalert2/nuxt/no-css',
+    'nuxt-webfontloader'
   ],
+  webfontloader: {
+    google: {
+      families: ['DM+Sans:wght@400;500;700&display=swap']
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -59,11 +66,31 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    defaultAssets: {
+      font: {
+        family: 'DM Sans',
+        size: 15
+      }
+    },
+    treeShake: true,
     theme: {
-      dark: true,
+      ligth: true,
       themes: {
+        light: {
+          primary: colors.deepPurple.darken1,
+          bg: '#ffffff',
+          surface: '#ffffff',
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        },
         dark: {
-          primary: colors.blue.darken2,
+          primary: colors.deepPurple.darken1,
+          bg: '#0a0514',
+          surface: '#130a24',
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
