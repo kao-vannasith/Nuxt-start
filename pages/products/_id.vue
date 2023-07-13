@@ -1,16 +1,55 @@
 <template>
   <div>
     <Nav />
-    <HomeCarousel :sale_items="products" />
-    <br><br>
-    <v-container>
-      <h1 class="text-md-h4 text-h6">
-        Check these out 🔥
-      </h1>
-      <br>
-      <ProductSlider :products="products" />
-      <br><br><br>
-      <Newsletter />
+    <v-container v-if="product">
+      <v-row justify="center">
+        <v-col cols="11" md="7">
+          <h2 class="text-center text-md-h4 font-weight-bold">
+            {{ product.name }}
+          </h2>
+          <div class="mt-2 text-center">
+            <v-rating
+              readonly
+              half-increments
+              class="mb-2"
+              color="yellow darken-2"
+              background-color="grey lighten-1"
+              :value="product.ratings"
+              dense
+              size="20"
+            />
+            <v-chip
+              v-for="(t, i) in product.tags"
+              :key="`prod${product.id}-${i}`"
+              small
+              label
+              outlined
+              class="mr-1"
+            >
+              {{ t }}
+            </v-chip>
+          </div>
+          <br>
+          <v-img
+            width="100%"
+            class="el rounded-lg"
+            height="50vh"
+            :src="product.image"
+          />
+          <p class="mt-5 mb-7">
+            {{ product.description }}
+          </p>
+          <v-btn
+            min-height="45"
+            min-width="170"
+            class="text-capitalize"
+            color="primary"
+            @click="$store.commit('cart/AddToCart', product)"
+          >
+            Add To Cart
+          </v-btn>
+        </v-col>
+      </v-row>
     </v-container>
     <br><br>
     <Footer />
@@ -20,9 +59,10 @@
 
 <script>
 export default {
-  name: 'HomePage',
+  name: 'ProductId',
   data () {
     return {
+      product: null,
       products: [
         {
           id: 1,
@@ -81,8 +121,12 @@ export default {
         }
       ]
     }
+  },
+  async created () {
+    const d = await this.products
+    this.product = d[parseInt(this.$route.params.id - 1)]
   }
 }
 </script>
 
-<style lang='scss' scoped></style>
+<style></style>

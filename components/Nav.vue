@@ -15,13 +15,23 @@
       </v-toolbar-title>
       <v-spacer />
 
-      <v-btn nuxt class="mr-md-2" icon>
+      <v-btn nuxt to="/products" class="mr-md-2" icon>
         <v-icon size="20">
           mdi-store-outline
         </v-icon>
       </v-btn>
-
-      <v-btn nuxt icon>
+      <v-badge
+        v-if="$store.state.cart.cart.length > 0"
+        overlap
+        :content="`${$store.state.cart.cart.length}`"
+      >
+        <v-btn to="/cart" nuxt icon>
+          <v-icon size="20">
+            mdi-cart-outline
+          </v-icon>
+        </v-btn>
+      </v-badge>
+      <v-btn v-else nuxt to="/cart" icon>
         <v-icon size="20">
           mdi-cart-outline
         </v-icon>
