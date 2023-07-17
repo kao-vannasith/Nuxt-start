@@ -15,6 +15,11 @@
       </v-toolbar-title>
       <v-spacer />
 
+      <v-btn nuxt to="/Login" class="mr-md-2" icon>
+        <v-icon size="20">
+          mdi-account
+        </v-icon>
+      </v-btn>
       <v-btn nuxt to="/products" class="mr-md-2" icon>
         <v-icon size="20">
           mdi-store-outline
