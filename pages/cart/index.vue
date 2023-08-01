@@ -72,6 +72,7 @@
             </v-card>
           </v-col>
         </template>
+        <h2>total</h2>{{ $formatMoney(total) }}
       </v-row>
     </v-container>
     <br><br>
@@ -81,7 +82,21 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+
+    }
+  },
+  computed: {
+    total () {
+      let total = 0
+      // eslint-disable-next-line space-in-parens, no-return-assign
+      this.$store.state.cart.cart.forEach( prices => total += (prices.quantity * prices.product.price) )
+      return total
+    }
+  }
+}
 </script>
 
 <style></style>

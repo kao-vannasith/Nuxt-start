@@ -10,6 +10,7 @@
       <br>
       <ProductSlider :products="products" />
       <br><br><br>
+      <TestHover />
       <ProductsSlider />
       <Newsletter />
     </v-container>
