@@ -30,24 +30,30 @@
             </v-chip>
           </div>
           <br>
-          <v-img
-            width="100%"
-            class="el rounded-lg"
-            height="50vh"
-            :src="product.image"
-          />
-          <p class="mt-5 mb-7">
-            {{ product.description }}
-          </p>
-          <v-btn
-            min-height="45"
-            min-width="170"
-            class="text-capitalize"
-            color="primary"
-            @click="$store.commit('cart/AddToCart', product)"
-          >
-            Add To Cart
-          </v-btn>
+          <v-row>
+            <v-col cols="5">
+              <p class="mt-5 mb-7">
+                {{ product.description }}
+              </p>
+              <v-btn
+                min-height="45"
+                min-width="170"
+                class="text-capitalize"
+                color="primary"
+                @click="$store.commit('cart/AddToCart', product)"
+              >
+                Add To Cart
+              </v-btn>
+            </v-col>
+            <v-col cols="7">
+              <v-img
+                width="100%"
+                class="el rounded-lg"
+                height="50vh"
+                :src="require(`./../../static/${product.image}`)"
+              />
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -66,10 +72,10 @@ export default {
       products: [
         {
           id: 1,
-          name: 'Silky Smooth Beats',
+          name: 'ສ້າງໃບຮັບເງິນມັດຈຳ',
           onSale: false,
           tags: ['Headphone', 'People'],
-          image: 'https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          image: '1.PNG',
           description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, possimus temporibus reprehenderit molestiae, doloribus eos obcaecati expedita, voluptatibus commodi  suscipit aliquid fuga modi alias fugiat nostrum. Accusantium incidunt quae modi',
           price: 20000,
           salePrice: null,

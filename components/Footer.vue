@@ -1,46 +1,49 @@
 <template>
-  <v-card
-    tile
-    flat
-    rounded="lg"
-    class="pa-md-10 pa-5 text-center"
-    color="surface"
+  <v-footer
+    dark
+    padless
   >
-    <h2 class="text-md-h6 font-weight-bold">
-      FreeCommerce
-    </h2>
-    <p class="text-md-body-2 mt-5">
-      Free eCommerce Site Built With NuxtJS ❤
-    </p>
-    <div class="text-center">
-      <v-btn
-        v-for="(b, i) in sm"
-        :key="`sm${i}`"
-        color="surface"
-        class="mr-2"
-        fab
-        depressed
-      >
-        <v-icon>{{ b.icon }}</v-icon>
-      </v-btn>
-    </div>
-    <br>
-  </v-card>
-</template>
+    <v-card
+      flat
+      tile
+      class="indigo lighten-1 white--text text-center"
+    >
+      <v-card-text>
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          class="mx-4 white--text"
+          icon
+        >
+          <v-icon size="24px">
+            {{ icon }}
+          </v-icon>
+        </v-btn>
+      </v-card-text>
 
+      <v-card-text class="white--text pt-0">
+        Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      </v-card-text>
+
+      <v-divider></v-divider>
+
+      <v-card-text class="white--text">
+        {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+      </v-card-text>
+    </v-card>
+  </v-footer>
+</template>
 <script>
 export default {
   name: 'TabFooter',
-  data () {
-    return {
-      sm: [
-        { icon: 'mdi-facebook', link: '#' },
-        { icon: 'mdi-twitter', link: '#' },
-        { icon: 'mdi-instagram', link: '#' },
-        { icon: 'mdi-youtube', link: '#' }
-      ]
-    }
-  }
+  data: () => ({
+    icons: [
+      'mdi-facebook',
+      'mdi-twitter',
+      'mdi-linkedin',
+      'mdi-instagram'
+    ]
+  })
 }
 </script>
 

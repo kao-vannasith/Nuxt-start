@@ -1,5 +1,5 @@
 <template>
-  <v-carousel height="100vh" hide-delimiter-background>
+  <v-carousel height="60vh" hide-delimiter-background>
     <template #prev="{ attrs, on }">
       <v-btn color="transparent" fab depressed v-bind="attrs" v-on="on">
         <v-icon size="20">
@@ -18,14 +18,14 @@
       <v-row class="fill-height" justify="center" align="center">
         <v-progress-circular
           width="2"
-          size="150"
+          size="120"
           color="primary"
           indeterminate
         />
       </v-row>
     </template>
     <v-carousel-item v-for="(p, i) in sale_items" :key="`saleitem${i}`">
-      <v-img height="100vh" :src="p.image">
+      <v-img height="60vh" :src="p.image">
         <v-container class="fill-height">
           <v-row dense align="center">
             <v-col md="7">

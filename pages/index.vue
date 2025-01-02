@@ -4,6 +4,7 @@
     <HomeCarousel :sale_items="products" />
     <br><br>
     <v-container>
+      <Package />
       <h1 class="text-md-h4 text-h6">
         Check these out 🔥
       </h1>
